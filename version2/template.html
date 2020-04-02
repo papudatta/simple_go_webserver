@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>happy kube</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<style>
+    .myblock {
+        border: 1px solid #eee;
+        padding: 10px;
+        margin: 5px;
+        width: 30%;
+        display: inline-block;
+        alignment: center;
+    }
+</style>
+<body>
+ <div id="mblock" style="width:500px; margin:0 auto;">
+    <h3 align="center">IP_Remote     : {{ .IP_Remote }}   </h3>
+    <h3 align="center">Hostname : {{ .Hostname }} </h3>
+    <h3 align="center">IP_Self       : {{ .IP_Self }} </h3>
+ </div>
+</body>
+<script>
+    var colors = ['#ff0000', '#00ff00', '#0000ff', '#856613', '#166e1c', '#163e6e', '#52166e', '#9e1955'];
+    var random_color = colors[Math.floor(Math.random() * colors.length)];
+    document.getElementById('mblock').style.color = random_color;
+</script>
+</html>
