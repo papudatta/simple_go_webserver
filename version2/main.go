@@ -6,6 +6,7 @@ import (
 	"net"
 	"html/template"
 	"fmt"
+	"log"
 )
 
 type Content struct  {
@@ -30,8 +31,12 @@ func ReqHandler(w http.ResponseWriter, r *http.Request) {
 	                   Hostname: gethn(),
 	                   IP_Self: getmyip()  }
 
+	wd, err := os.Getwd()
+	if err != nil {
+		log.Fatal(err)
+	}
 	w.Header().Add("Content-Type", "text/html; charset=utf-8")
-	t, err := template.ParseFiles("./template.html")
+	t, err := template.ParseFiles(wd + "/template.html")
 	if err != nil {
 		fmt.Fprintf(w, "Unable to server from template!")
 	}
