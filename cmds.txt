@@ -1,0 +1,8 @@
+docker build -t <docker_id>/simple_go_webserver:5 .
+docker login
+docker push <docker_id>/simple_go_webserver:5
+
+
+kubectl set image deployment/go-web-api api=papudatta/simple_go_webserver:10 --record
+kubectl rollout status deployment.v1.apps/go-web-api
+kubectl rollout undo deployment.v1.apps/go-web-api
