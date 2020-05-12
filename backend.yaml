@@ -1,0 +1,16 @@
+apiVersion: cloud.google.com/v1beta1
+kind: BackendConfig
+metadata:
+  labels:
+    service: go-web
+    language: go
+  name: trusted-ext-sources-iap
+spec:
+  timeoutSec: 40
+  connectionDraining:
+    drainingTimeoutSec: 60
+  sessionAffinity:
+    affinityType: "CLIENT_IP"
+  logging:
+    enable: true
+    sampleRate: 0.5

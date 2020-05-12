@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-web-api
+  labels:
+    type: api
+    service: go-web
+    language: go
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      type: api
+      service: go-web
+  template:
+    metadata:
+      labels:
+        type: api
+        service: go-web
+        language: go
+    spec:
+      containers:
+      - name: api
+        image: papudatta/go_multiple_ports:2
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8081
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8081
+          periodSeconds: 10
