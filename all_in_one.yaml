@@ -60,7 +60,7 @@ spec:
   rules:
     - http:
        paths:
-        - path: /?(.*)
+        - path: /
           backend:
             serviceName: go-web-api-svc
             servicePort: 8080
